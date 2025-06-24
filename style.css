@@ -1,0 +1,254 @@
+/* --- Global Resets & Variables --- */
+:root {
+    --primary-color: #007bff; /* A nice blue, change as you like */
+    --primary-hover: #0056b3;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --success-hover: #1e7e34;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --text-light: #e0e0e0;
+    --text-dark: #212529;
+    --input-bg: rgba(255, 255, 255, 0.08);
+    --input-border: rgba(255, 255, 255, 0.2);
+    --input-focus-border: var(--primary-color);
+    --container-bg: rgba(30, 30, 45, 0.65); /* Darker semi-transparent for contrast */
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --blur-radius: 12px;
+    --border-radius: 15px;
+    --transition-speed: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-image: url('download.jpeg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; /* Parallax-like effect */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: var(--text-light);
+    overflow-x: hidden; /* Prevent horizontal scroll on small screens during animation */
+}
+
+/* --- Login Container Styling --- */
+.login-container {
+    width: 100%;
+    max-width: 450px;
+    background: var(--container-bg);
+    backdrop-filter: blur(var(--blur-radius));
+    -webkit-backdrop-filter: blur(var(--blur-radius)); /* Safari */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    padding: 40px 30px;
+    box-shadow: 0 15px 35px var(--shadow-color);
+    animation: fadeInSlideUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@keyframes fadeInSlideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-form h2 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--light-color);
+    text-align: center;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.login-form .subtitle {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+/* --- Input Group Styling --- */
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block; /* Visually hidden, but good for accessibility */
+    position: absolute;
+    left: -9999px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 45px 14px 15px; /* Space for icon */
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 10px;
+    color: var(--text-light);
+    font-size: 1rem;
+    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--input-focus-border);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Focus ring */
+}
+
+.input-group .icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.2em; /* Make emoji icons slightly larger */
+    pointer-events: none; /* Default, allow click for toggle */
+}
+
+.input-group .toggle-password {
+    cursor: pointer;
+    pointer-events: auto; /* Enable clicks for this specific icon */
+}
+
+
+/* --- Options (Remember Me & Forgot Password) --- */
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    color: var(--text-light);
+    cursor: pointer;
+}
+
+.remember-me input[type="checkbox"] {
+    margin-right: 8px;
+    accent-color: var(--primary-color); /* Modern way to color checkboxes */
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.forgot-password {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+.forgot-password:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+/* --- Button Styling --- */
+.btn-login {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(90deg, var(--success-color), #20c997);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background var(--transition-speed) ease, transform 0.2s ease, box-shadow var(--transition-speed) ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+.btn-login:hover {
+    background: linear-gradient(90deg, var(--success-hover), #1baa80);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(40, 167, 69, 0.4);
+}
+
+.btn-login:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 10px rgba(40, 167, 69, 0.2);
+}
+
+/* --- Register Link --- */
+.register-link {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+.register-link a {
+    color: var(--primary-color);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+.register-link a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 768px) {
+    .login-container {
+        margin: 20px; /* Give some space from screen edges */
+        padding: 30px 25px;
+    }
+    .login-form h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: 25px 20px;
+        border-radius: 10px; /* Slightly smaller radius on small screens */
+    }
+    .login-form h2 {
+        font-size: 1.8rem;
+    }
+    .login-form .subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 25px;
+    }
+    .input-group input {
+        padding: 12px 40px 12px 12px;
+        font-size: 0.95rem;
+    }
+    .btn-login {
+        padding: 12px;
+        font-size: 1rem;
+    }
+    .options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px; /* Spacing between items when stacked */
+    }
+    .forgot-password {
+        align-self: flex-end; /* Push to the right even when stacked */
+    }
+}
